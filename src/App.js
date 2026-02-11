@@ -1,24 +1,51 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+
+// Public pages
+import Home from "./pages/Home";
+import PatientLogin from "./pages/patient/PatientLogin";
+import PatientRegister from "./pages/patient/PatientRegister";
+import DoctorLogin from "./pages/doctor/DoctorLogin";
+import DoctorSuccess from "./pages/doctor/DoctorSuccess";
+
+// Patient protected routes
+import PatientRoutes from "./routes/PatientRoutes";
+import DoctorDashboard from "./pages/doctor/DoctorDashboard";
+
+// Simple auth check
+const isPatientLoggedIn = () => {
+  return !!localStorage.getItem("patientId");
+};
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+
+        {/* 🔓 PUBLIC ROUTES */}
+        <Route path="/" element={<Home />} />
+        <Route path="/patient/login" element={<PatientLogin />} />
+        <Route path="/patient/register" element={<PatientRegister />} />
+        <Route path="/doctor/login" element={<DoctorLogin />} />
+        <Route path="/doctor/dashboard" element={<DoctorDashboard />} />
+
+        {/* 🔐 PROTECTED PATIENT ROUTES */}
+        <Route
+          path="/patient/*"
+          element={
+            isPatientLoggedIn() ? (
+              <PatientRoutes />
+            ) : (
+              <Navigate to="/patient/login" />
+            )
+          }
+        />
+
+        {/* Fallback */}
+        <Route path="*" element={<Navigate to="/" />} />
+
+      </Routes>
+    </BrowserRouter>
   );
 }
 
