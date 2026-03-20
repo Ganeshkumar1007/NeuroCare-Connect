@@ -1,6 +1,6 @@
 import { useState } from "react";
-import DoctorHeader from "../../components/DoctorHeader";
 import DoctorSidebar from "../../components/DoctorSidebar";
+import Header from "../../components/Header";
 
 export default function DoctorUpload() {
   const [file, setFile] = useState(null);
@@ -21,7 +21,7 @@ export default function DoctorUpload() {
 
   return (
     <div className="min-h-screen bg-slate-950 text-white">
-      <DoctorHeader />
+      <Header />
 
       <div className="flex">
         <DoctorSidebar />

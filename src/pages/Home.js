@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <div className={homeStyles.container}>
       
-      {/* Header */}
+   
       <div className={homeStyles.header}>
         <img
           src={brain}
@@ -20,10 +20,10 @@ export default function Home() {
         </h1>
       </div>
 
-      {/* Main Section */}
+     
       <div className={homeStyles.main}>
         
-        {/* Doctors */}
+     
         <div className={homeStyles.leftSection}>
           <h2 className={homeStyles.title}>
             For Doctors
@@ -39,7 +39,6 @@ export default function Home() {
           </button>
         </div>
 
-        {/* Patients */}
         <div className={homeStyles.rightSection}>
           <h2 className={homeStyles.title}>
             For Patients

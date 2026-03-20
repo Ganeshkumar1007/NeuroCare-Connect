@@ -1,47 +1,58 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
-// Public pages
+// public pages
 import Home from "./pages/Home";
 import PatientLogin from "./pages/patient/PatientLogin";
 import PatientRegister from "./pages/patient/PatientRegister";
 import DoctorLogin from "./pages/doctor/DoctorLogin";
-import DoctorSuccess from "./pages/doctor/DoctorSuccess";
 
-// Patient protected routes
+// patient routes
 import PatientRoutes from "./routes/PatientRoutes";
-import DoctorDashboard from "./pages/doctor/DoctorDashboard";
 
-// Simple auth check
+// doctor routes
+import DoctorRoutes from "./routes/DoctorRoutes";
+
+// auth checks
 const isPatientLoggedIn = () => {
   return !!localStorage.getItem("patientId");
 };
 
+const isDoctorLoggedIn = () => {
+  return !!localStorage.getItem("doctorId");
+};
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
 
-        {/* 🔓 PUBLIC ROUTES */}
+        {/* PUBLIC */}
         <Route path="/" element={<Home />} />
         <Route path="/patient/login" element={<PatientLogin />} />
         <Route path="/patient/register" element={<PatientRegister />} />
         <Route path="/doctor/login" element={<DoctorLogin />} />
-        <Route path="/doctor/dashboard" element={<DoctorDashboard />} />
 
-        {/* 🔐 PROTECTED PATIENT ROUTES */}
+        {/* PATIENT ROUTES */}
         <Route
           path="/patient/*"
           element={
-            isPatientLoggedIn() ? (
-              <PatientRoutes />
-            ) : (
-              <Navigate to="/patient/login" />
-            )
+            isPatientLoggedIn()
+              ? <PatientRoutes />
+              : <Navigate to="/patient/login" />
           }
         />
 
-        {/* Fallback */}
+        {/* DOCTOR ROUTES */}
+        <Route
+          path="/doctor/*"
+          element={
+            isDoctorLoggedIn()
+              ? <DoctorRoutes />
+              : <Navigate to="/doctor/login" />
+          }
+        />
+
+        {/* FALLBACK */}
         <Route path="*" element={<Navigate to="/" />} />
 
       </Routes>

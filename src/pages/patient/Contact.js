@@ -6,8 +6,6 @@ export default function Contact() {
   return (
     <>
       <Header />
-
-      {/* SIDE-BY-SIDE LAYOUT */}
       <div className="flex min-h-[calc(100vh-72px)] bg-[#f3faf7]">
         <Sidebar />
 

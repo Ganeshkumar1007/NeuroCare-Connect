@@ -63,7 +63,6 @@ export default function PatientAppointments() {
     <>
       <Header />
 
-      {/* ✅ SIDE-BY-SIDE LAYOUT FIX */}
       <div className="flex min-h-[calc(100vh-72px)] bg-[#f3faf7]">
         <Sidebar />
 

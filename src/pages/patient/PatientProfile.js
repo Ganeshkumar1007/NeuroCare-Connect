@@ -51,7 +51,6 @@ export default function PatientProfile() {
     <>
       <Header />
 
-      {/* SIDE-BY-SIDE LAYOUT */}
       <div className="flex min-h-[calc(100vh-72px)] bg-[#f3faf7]">
         <Sidebar />
 
@@ -62,7 +61,7 @@ export default function PatientProfile() {
 
           <div className={patientProfileStyles.card}>
             <div className={patientProfileStyles.grid}>
-              {/* Full Name */}
+   
               <div className={patientProfileStyles.field}>
                 <label className={patientProfileStyles.label}>
                   Full Name
@@ -75,7 +74,7 @@ export default function PatientProfile() {
                 />
               </div>
 
-              {/* Email */}
+        
               <div className={patientProfileStyles.field}>
                 <label className={patientProfileStyles.label}>
                   Email Address
@@ -88,7 +87,7 @@ export default function PatientProfile() {
                 />
               </div>
 
-              {/* Date of Birth */}
+         
               <div className={patientProfileStyles.field}>
                 <label className={patientProfileStyles.label}>
                   Date of Birth

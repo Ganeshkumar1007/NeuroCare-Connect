@@ -28,12 +28,11 @@ export default function PatientLogin() {
       return;
     }
 
-    // ✅ store before navigation
     localStorage.setItem("patientId", data.patientId);
     localStorage.setItem("patientName", data.name);
     localStorage.setItem("role", data.role);
 
-    navigate("/patient/dashboard", { replace: true });
+    window.location.href = "/patient/dashboard";
   };
 
   return (
@@ -74,7 +73,7 @@ export default function PatientLogin() {
         </form>
 
         <p className={patientLoginStyles.footerText}>
-          Don’t have an account?{" "}
+          Dont't have an account?{" "}
           <Link
             to="/patient/register"
             className={patientLoginStyles.footerLink}

@@ -175,4 +175,34 @@ router.put("/patient/profile/:id", async (req, res) => {
   }
 });
 
+// GET doctor profile
+router.get("/doctor/profile/:doctorId", async (req, res) => {
+  try {
+    const doctor = await User.findOne({
+      doctorId: req.params.doctorId,
+      role: "doctor",
+    });
+    if (!doctor) {
+      return res.status(404).json({ message: "Doctor not found" });
+    }
+    res.json(doctor);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// UPDATE doctor profile
+router.put("/doctor/profile/:doctorId", async (req, res) => {
+  try {
+    const { name, email, contactNumber } = req.body;
+    await User.findOneAndUpdate(
+      { doctorId: req.params.doctorId, role: "doctor" },
+      { name, email, contactNumber }
+    );
+    res.json({ message: "Profile updated" });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 module.exports = router;

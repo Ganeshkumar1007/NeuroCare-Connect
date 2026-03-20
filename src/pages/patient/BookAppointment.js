@@ -74,7 +74,6 @@ const minDate = `${yyyy}-${mm}-${dd}`;
     <>
       <Header />
 
-      {/* SIDE-BY-SIDE LAYOUT */}
       <div className="flex min-h-[calc(100vh-72px)] bg-[#f3faf7]">
         <Sidebar />
 
@@ -84,7 +83,6 @@ const minDate = `${yyyy}-${mm}-${dd}`;
           </h2>
 
           <div className={bookAppointmentStyles.container}>
-            {/* Doctor Select */}
             <select
               value={doctorId}
               onChange={e => setDoctorId(e.target.value)}
@@ -99,7 +97,6 @@ const minDate = `${yyyy}-${mm}-${dd}`;
             </select>
 
             <div className={bookAppointmentStyles.grid}>
-              {/* Calendar */}
               <div className={bookAppointmentStyles.calendarBox}>
                 <p className={bookAppointmentStyles.calendarTitle}>
                   Select Date
@@ -114,7 +111,6 @@ const minDate = `${yyyy}-${mm}-${dd}`;
                 />
               </div>
 
-              {/* Available Times */}
               <div className={bookAppointmentStyles.slotsBox}>
                 <p className={bookAppointmentStyles.calendarTitle}>
                   Available Times

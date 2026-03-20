@@ -20,7 +20,7 @@ const submit = async () => {
     body: JSON.stringify({ doctorId, password }),
   });
 
-  const data = await res.json();  // ✅ Read ONLY ONCE
+  const data = await res.json(); 
 
   console.log("Response status:", res.status);
   console.log("Response data:", data);
@@ -30,9 +30,9 @@ const submit = async () => {
     return;
   }
 
-  // store doctor data
   localStorage.setItem("doctorId", data.doctorId);
-  localStorage.setItem("role", data.role);
+  localStorage.setItem("doctorName", data.name);
+  localStorage.setItem("role", "doctor");
 
   navigate("/doctor/dashboard");
 };
