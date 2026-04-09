@@ -8,7 +8,9 @@ export default function DoctorLogin() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-const submit = async () => {
+const submit = async (e) => {
+  e.preventDefault();
+
   if (!doctorId || !passwordRegex.test(password)) {
     alert("Invalid input");
     return;
@@ -31,10 +33,10 @@ const submit = async () => {
   }
 
   localStorage.setItem("doctorId", data.doctorId);
-  localStorage.setItem("doctorName", data.name);
+  localStorage.setItem("doctorName", data.doctorName || "");
   localStorage.setItem("role", "doctor");
 
-  navigate("/doctor/dashboard");
+  window.location.href = "/doctor/dashboard";
 };
 
 
@@ -46,26 +48,28 @@ const submit = async () => {
           Doctor Secure Login
         </h2>
 
-        <input
-          type="text"
-          placeholder="Medical License ID"
-          onChange={(e) => setDoctorId(e.target.value)}
-          className={doctorLoginStyles.input}
-        />
+        <form onSubmit={submit}>
+          <input
+            type="text"
+            placeholder="Medical License ID"
+            onChange={(e) => setDoctorId(e.target.value)}
+            className={doctorLoginStyles.input}
+          />
 
-        <input
-          type="password"
-          placeholder="Password"
-          onChange={(e) => setPassword(e.target.value)}
-          className={doctorLoginStyles.input}
-        />
+          <input
+            type="password"
+            placeholder="Password"
+            onChange={(e) => setPassword(e.target.value)}
+            className={doctorLoginStyles.input}
+          />
 
-        <button
-          onClick={submit}
-          className={doctorLoginStyles.button}
-        >
-          Login
-        </button>
+          <button
+            type="submit"
+            className={doctorLoginStyles.button}
+          >
+            Login
+          </button>
+        </form>
 
         <p className={doctorLoginStyles.footerText}>
           Forgot License ID / Password?

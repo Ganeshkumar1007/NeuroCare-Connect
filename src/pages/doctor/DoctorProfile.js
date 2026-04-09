@@ -64,10 +64,11 @@ export default function DoctorProfile() {
   return (
     <>
       <Header />
-      <div className="doctor-layout">
+      <div className="min-h-screen bg-slate-950 text-white">
+      <div className="flex">
         <DoctorSidebar />
 
-        <div className="doctor-content">
+        <div className="flex-1 p-8">
           <h2 className="text-2xl font-semibold mb-6">Doctor Profile</h2>
 
           {error && (
@@ -87,9 +88,9 @@ export default function DoctorProfile() {
                 <input
                   type="text"
                   placeholder="Enter doctor name"
-                  value={form.name || ""}
+                  value={form.doctorName || ""}
                   onChange={(e) =>
-                    setForm({ ...form, name: e.target.value })
+                    setForm({ ...form, doctorName: e.target.value })
                   }
                   className="w-full bg-slate-800 text-white px-4 py-2 rounded-md border border-slate-700 focus:outline-none focus:border-slate-500"
                 />
@@ -133,6 +134,7 @@ export default function DoctorProfile() {
             </div>
           )}
         </div>
+      </div>
       </div>
     </>
   );
